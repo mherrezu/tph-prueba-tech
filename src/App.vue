@@ -42,7 +42,8 @@ import PhiloSection from './components/PhiloSection.vue'
     <PhiloSection title="Nuestra <span>filosofía</span>"
       description="En Iron Club creemos que el entrenamiento es una parte fundamental de la vida.
         Por eso, nos esforzamos en ofrecerte la mejor experiencia de entrenamiento, para que puedas disfrutar de cada sesión y alcanzar tus objetivos."
-      :image="{ url: '/philo.jpg', alt: 'Imagen representativa de la filosofía' }" />
+      :image="{ url: '/philo.jpg', alt: 'Imagen representativa de la filosofía' }"
+      :cta="{ title: 'únete', url: 'login' }" />
   </main>
   <FooterItem logo="Iron" company="Iron Club" address="C/ Cuenca 7, Vigo" instagram="" />
 </template>

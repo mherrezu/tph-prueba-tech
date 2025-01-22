@@ -1,3 +1,30 @@
+<template>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">{{ logo }}</h1>
+
+      <div class="menu-toggle" @click="toggleMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <nav :class="{ 'open': menuOpen }">
+        <ul class="nav-list">
+          <li v-for="link in links" :key="`link-${link.title}`">
+            <a :href="`#${link.url}`" @click="toggleMenu">{{ link.title }}</a>
+          </li>
+          <li v-for="route in routerLinks" :key="`link-${route.title}`">
+            <RouterLink :to="`${route.url}`" :class="`${route.ctaClass}`" @click="toggleMenu">
+              {{ route.title }}
+            </RouterLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</template>
+
 <script>
 export default {
   props: {
@@ -13,27 +40,19 @@ export default {
       type: Array,
       default: () => [],
     },
-  }
-}
+  },
+  data() {
+    return {
+      menuOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    },
+  },
+};
 </script>
-
-<template>
-  <header class="header">
-    <div class="container">
-      <h1 class="logo">{{ logo }}</h1>
-      <nav>
-        <ul class="nav-list">
-          <li v-for="link in links" :key="`link-${link.title}`">
-            <a :href="`#${link.url}`">{{ link.title }}</a>
-          </li>
-          <li v-for="route in routerLinks" :key="`link-${route.title}`">
-            <RouterLink :to="`${route.url}`" :class="`${route.ctaClass}`">{{ route.title }}</RouterLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-</template>
 
 <style scoped>
 header {
@@ -71,7 +90,6 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   color: #000;
 }
-
 
 a {
   text-decoration: none;
@@ -112,5 +130,91 @@ a:hover {
 .cta-logup:hover {
   background-color: var(--color-dark);
   color: var(--color-light);
+}
+
+/* Menú en móvil */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  height: 2px;
+  width: 25px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+/* Navegación en móvil */
+nav {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--vt-c-white-soft);
+  z-index: 999;
+}
+
+nav.open {
+  transform: translateY(0);
+}
+
+.nav-list {
+  flex-direction: column;
+  padding: 20px;
+  list-style: none;
+  display: none;
+  gap: 10px;
+}
+
+nav.open .nav-list {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    transform: translateY(-100%);
+  }
+
+  nav.open {
+    transform: translateY(0);
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  nav.open .nav-list {
+    display: flex;
+  }
+}
+
+@media (min-width: 600px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  nav {
+    position: static;
+    transform: translateY(0);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-self: center;
+  }
 }
 </style>

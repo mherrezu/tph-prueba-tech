@@ -33,7 +33,7 @@ export default {
 .hero {
   position: relative;
   height: 100vh;
-  background-image: url("/public/hero.jpg");
+  background-image: url("/hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
