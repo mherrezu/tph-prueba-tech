@@ -1,85 +1,48 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderItem from './components/HeaderItem.vue'
+import HeroSection from './components/HeroSection.vue'
+import FooterItem from './components/FooterItem.vue'
+import InfoSection from './components/InfoSection.vue'
+import TrainingsSection from './components/TrainingsSection.vue'
+import PhiloSection from './components/PhiloSection.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <HeaderItem logo="Iron"
+    :links="[{ title: 'Entrenamientos', url: 'trainings' }, { title: 'Filosofía', url: 'philo' }, { title: 'Contacto', url: 'footer' }]"
+    :router-links="[{ title: 'Entrar', url: 'login', ctaClass: 'cta-login' }, { title: 'Registro', url: 'logup', ctaClass: 'cta-logup' }]" />
+  <main>
+    <HeroSection title="Hierro para tu cuerpo"
+      description="Aprende a entrenar, a disfrutar de ello y consigue tu mejor versión."
+      :cta="{ title: 'Es tu momento', url: 'login' }" />
+    <InfoSection text="COMIENZA A SER UN ATLETA HÍBRIDO" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <TrainingsSection title="Nuestros entrenamientos" description="Descubre los mejores tipos de entrenamientos adaptados a tus objetivos.
+        Ya sea que busques fuerza, resistencia o relajación, ¡tenemos lo que necesitas!" :trainings="[
+          {
+            image: '/training.jpg',
+            title: 'Entrenamiento de Fuerza',
+            description: 'Mejora tu fuerza con ejercicios de peso y resistencia.'
+          },
+          {
+            image: '/team.jpg',
+            title: 'Entrenamiento de Fuerza',
+            description: 'Quema calorías y mejora tu resistencia cardiovascular.',
+          },
+          {
+            image: '/pesas.jpg',
+            title: 'Entrenamiento de Fuerza',
+            description: 'Relaja tu mente y mejora tu flexibilidad corporal.',
+          },
+          {
+            image: '/outdoor.jpg',
+            title: 'Entrenamiento de Fuerza',
+            description: 'Entrenamientos de alta intensidad para resultados rápidos.'
+          }]" />
+    <PhiloSection title="Nuestra <span>filosofía</span>"
+      description="En Iron Club creemos que el entrenamiento es una parte fundamental de la vida.
+        Por eso, nos esforzamos en ofrecerte la mejor experiencia de entrenamiento, para que puedas disfrutar de cada sesión y alcanzar tus objetivos."
+      :image="{ url: '/philo.jpg', alt: 'Imagen representativa de la filosofía' }" />
+  </main>
+  <FooterItem logo="Iron" company="Iron Club" address="C/ Cuenca 7, Vigo" instagram="" />
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
