@@ -20,6 +20,13 @@ This project is a responsive and modular landing page for a gym, developed as pa
 <a href="https://vuejs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a>
 <a href="https://vitejs.dev/" target="_blank" rel="noreferrer"><img src="https://github.com/dochne/wappalyzer/blob/main/src/images/icons/vite.svg" alt="vite" width="40" height="40"/></a>
 
+## Deploy
+
+Here you can see the site deployed on Netlify:
+
+🔗 [TPH CHALLENGE - DEPLOY](https://tph-prueba-tech.netlify.app/)
+
+
 ## Project Setup
 
 ```sh
@@ -37,10 +44,6 @@ bun run dev
 ```sh
 bun run build
 ```
-
-## Demo
-
-Insert gif or link to demo
 
 ## Authors
 
