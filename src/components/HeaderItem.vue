@@ -15,9 +15,9 @@
             <a :href="`#${link.url}`" @click="toggleMenu">{{ link.title }}</a>
           </li>
           <li v-for="route in routerLinks" :key="`link-${route.title}`">
-            <RouterLink :to="`${route.url}`" :class="`${route.ctaClass}`" @click="toggleMenu">
+            <router-link :to="`${route.url}`" :class="`${route.ctaClass}`" @click="toggleMenu">
               {{ route.title }}
-            </RouterLink>
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name: "HeaderItem",
   props: {
     logo: {
       type: String,
@@ -60,7 +61,6 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  border-bottom: 1px solid var(--color-border);
   font-size: 16px;
   z-index: 1000;
   background-color: var(--vt-c-white-soft);
